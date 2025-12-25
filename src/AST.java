@@ -8,15 +8,10 @@ public class AST {
     DefineStatement
  ├── Identifier:
  └── ExpressionBlock
-      └── tokens (type-only for now): EXPR / EXPR $
+      └── tokens
      */
 
-    public enum NodeType{
-        PROGRAM,
-        EXPRESSION,
-        IDENTIFIER,
-        ASSIGNMENT,
-    }
+
 
     public interface Node{
 
@@ -36,15 +31,15 @@ public class AST {
 
     class DefineStatement implements Statement {
         Identifier name;
-        ExpressionBlock value; // <-- minimal: RHS block
+        ExpressionBlock value;
     }
 
     class Identifier implements Expression {
-        String name; // no lexeme available yet; parser will put "IDENTIFIER"
+        String name;
     }
 
     class ExpressionBlock implements Expression {
-        ArrayList<String> body = new ArrayList<String>(); // <-- minimal: token types inside { ... }
+        ArrayList<String> body = new ArrayList<String>();
     }
 
 }
